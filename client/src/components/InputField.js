@@ -5,7 +5,7 @@ const InputField = ({ label, ...rest }) => {
   return (
     <Form.Group className="mb-3" controlId="formBasicPassword">
       <Form.Label>{label}</Form.Label>
-      <Form.Control {...rest} />
+      <Form.Control {...rest} required />
     </Form.Group>
   );
 };
