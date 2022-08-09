@@ -1,6 +1,14 @@
+import { useEffect } from "react";
 import Table from "react-bootstrap/Table";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllTransactions } from "../SliceAndAction/transactions/TransactionsAction";
 
 const DashboardTable = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAllTransactions());
+  }, []);
+  const { transactions } = useSelector((state) => state.TransactionSlice);
   return (
     <Table striped bordered hover className="mt-5">
       <thead>

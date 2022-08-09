@@ -2,16 +2,19 @@ import React, { useState } from "react";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
+import { postTransactions } from "../SliceAndAction/transactions/TransactionsAction";
+import { useDispatch } from "react-redux";
 
 const DashboardForm = () => {
   const [transactionDetails, setTransactionDetials] = useState({});
+  const dispatch = useDispatch();
   const handleOnChange = (e) => {
     const { name, value } = e.target;
     setTransactionDetials({ ...transactionDetails, [name]: value });
   };
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    console.log(transactionDetails);
+    dispatch(postTransactions(transactionDetails));
   };
   return (
     <Form onSubmit={handleOnSubmit}>
